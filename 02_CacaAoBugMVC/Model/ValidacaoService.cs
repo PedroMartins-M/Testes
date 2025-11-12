@@ -17,7 +17,6 @@ namespace _02_CacaAoBugMVC.Model
        private readonly string padraoNome = @"^(?!.*([A-Za-zÀ-ÖØ-öø-ÿ])\1\1)(?!.* {2,})(?=.{3,}).+$";
        private readonly string padraoNota = @"^(?:10(?:[.,]0+)?|[0-9](?:[.,][0-9]+)?)$";
 
-
         //padrão
         //- valida nota 0 a 10
         //- Aceita deciamais, aceitando ponto(.) ou virgula(,) como separar de decimal
