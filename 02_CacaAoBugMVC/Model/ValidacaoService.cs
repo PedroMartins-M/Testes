@@ -8,53 +8,47 @@ using System.Threading.Tasks;
 
 namespace _02_CacaAoBugMVC.Model
 {
-    internal class ValidacaoService
+    public class ValidacaoService
     {
-        //Padrão:
-        //- minimo de 3 caracteres
-        //- não pode ter 3 letras repetidas
-        //- não permititr multiplo espaço
-       private readonly string padraoNome = @"^(?!.*([A-Za-zÀ-ÖØ-öø-ÿ])\1\1)(?!.* {2,})(?=.{3,}).+$";
-       private readonly string padraoNota = @"^(?:10(?:[.,]0+)?|[0-9](?:[.,][0-9]+)?)$";
+        // valida nome: mínimo 3 caracteres, não ter 3 letras iguais seguidas, não ter duplo espaço
+        private readonly string padraoNome = @"^(?!.*([A-Za-zÀ-ÖØ-öø-ÿ])\1\1)(?!.* {2,})(?=.{3,}).+$";
 
-        //padrão
-        //- valida nota 0 a 10
-        //- Aceita deciamais, aceitando ponto(.) ou virgula(,) como separar de decimal
+        // valida nota: 0..10, aceita decimais (ex: 7,5 or 7.5) - here we expect dot or comma convertible
+        private readonly string padraoNota = @"^(?:10(?:[.,]0+)?|[0-9](?:[.,][0-9]+)?)$";
 
-        public bool ValidarNome(string nome, out string mensagemErro)
+        public bool ValidaNome(string nome, out string mensagemErro)
         {
             mensagemErro = string.Empty;
-            if (string.IsNullOrEmpty(nome))
+            if (string.IsNullOrWhiteSpace(nome))
             {
-                mensagemErro = "Nome vazio";
+                mensagemErro = "Nome vazio.";
                 return false;
             }
 
-            if (!Regex.IsMatch(nome.Trim(), padraoNome))
+            if (Regex.IsMatch(nome.Trim(), padraoNome))
             {
-                mensagemErro = "-Minimo 3 caracteres\nNão pode ter 3 letras iguais seguidas\n Não pode ter espaços multiplos";
-                return false;
+                return true;
             }
 
-            return true;
+            mensagemErro = "- Mínimo 3 caracteres\n- Não pode ter 3 letras iguais seguidas\n- Não pode ter espaços duplos";
+            return false;
         }
 
-        public bool ConverteNota(string notaEntrada, out double nota)
+        // tenta converter a entrada textual em double (aceita vírgula ou ponto)
+        public bool TentarConverterNota(string entrada, out double nota)
         {
             nota = -1;
-            if( string.IsNullOrEmpty(notaEntrada) ) return false; 
+            if (string.IsNullOrWhiteSpace(entrada)) return false;
 
-            var notaDecimalVirgula = notaEntrada.Trim().Replace(",",".");
+            var texto = entrada.Trim().Replace(',', '.'); // normaliza
+            if (!Regex.IsMatch(texto, padraoNota)) return false;
 
-            if (Regex.IsMatch(notaDecimalVirgula, padraoNome)) return false;
-
-            if (double.TryParse(notaDecimalVirgula, System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out nota))
+            if (double.TryParse(texto, System.Globalization.NumberStyles.Number, System.Globalization.CultureInfo.InvariantCulture, out nota))
             {
-                if(nota < 0 || nota > 10) 
-                return false;
-                else
-                    return true;
+                if (nota < 0 || nota > 10) return false;
+                return true;
             }
+
             return false;
         }
     }

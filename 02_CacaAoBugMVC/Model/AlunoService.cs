@@ -6,26 +6,25 @@ using System.Threading.Tasks;
 
 namespace _02_CacaAoBugMVC.Model
 {
-    internal class AlunoService
+    public class AlunoService
     {
-        public double calcularMedia(double n1, double n2, double n3)
+        public double CalcularMedia(double n1, double n2, double n3)
         {
-            return (n1 + n2 + n3) / 3;
-        }
-        public string Obtersituacao(double media)
-        {
-            if (media >= 7)
-                return "Aprovado";
-            else if (media >= 4)
-                return "Em Exame Final";
-            else
-                return "Reprovado";
+            // não valida entradas aqui; validações ficam no ValidacaoService/Controller
+            return (n1 + n2 + n3) / 3.0;
         }
 
-        public double CalcularTaxaAprovacao(int totalAlunos, int alunosAprovados)
+        public string ObterSituacao(double media)
         {
-            //Transforma a variável do tipo int para double utilizando o CAST (tipo)variável
-            return (alunosAprovados / (double)totalAlunos) * 100.0;
+            if (media >= 7.0) return "Aprovado";
+            if (media >= 5.0) return "Em Exame Final";
+            return "Reprovado";
+        }
+
+        public double CalcularTaxaAprovacao(int total, int aprovados)
+        {
+            if (total <= 0) return 0.0;
+            return (aprovados / (double)total) * 100.0;
         }
     }
 }
