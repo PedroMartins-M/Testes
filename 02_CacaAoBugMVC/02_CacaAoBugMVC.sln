@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_CacaAoBugMVC", "02_CacaAoBugMVC.csproj", "{F29C73B5-61DA-4695-BBD4-C8FF62E63FA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_CacaAoBugMVC.Test", "..\02_CacaAoBugMVC.Test\02_CacaAoBugMVC.Test.csproj", "{DEC82EA3-99C5-422E-9926-CD2448E927B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F29C73B5-61DA-4695-BBD4-C8FF62E63FA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F29C73B5-61DA-4695-BBD4-C8FF62E63FA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F29C73B5-61DA-4695-BBD4-C8FF62E63FA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC82EA3-99C5-422E-9926-CD2448E927B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC82EA3-99C5-422E-9926-CD2448E927B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC82EA3-99C5-422E-9926-CD2448E927B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC82EA3-99C5-422E-9926-CD2448E927B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

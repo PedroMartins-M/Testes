@@ -9,6 +9,7 @@ namespace _02_CacaAoBugMVC.Controller
 {
     public class AlunoController
     {
+
         private readonly AlunoService _alunoService;
         private readonly ValidacaoService _validacaoService;
         private readonly List<Aluno> _alunos;

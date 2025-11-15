@@ -11,7 +11,7 @@ namespace _02_CacaAoBugMVC.Model
         public double CalcularMedia(double n1, double n2, double n3)
         {
             // não valida entradas aqui; validações ficam no ValidacaoService/Controller
-            return (n1 + n2 + n3) / 3.0;
+            return Math.Round ((n1 + n2 + n3) / 3.0, 2);
         }
 
         public string ObterSituacao(double media)
