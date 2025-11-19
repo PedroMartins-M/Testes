@@ -35,11 +35,11 @@ namespace _02_CacaAoBugMVC.Test
             var service = new AlunoService();
 
             var resultado = service.ObterSituacao(7.0);
-            var resultadoEmExame = service.ObterSituacao(6.5);
+            var resultadoEmExameFinal = service.ObterSituacao(6.5);
             var resultadoReprovado = service.ObterSituacao(4.9);
 
             Assert.AreEqual("Aprovado", resultado);
-            Assert.AreEqual("Exame Final", resultadoEmExame);
+            Assert.AreEqual("Em Exame Final", resultadoEmExameFinal);
             Assert.AreEqual("Reprovado", resultadoReprovado);
         }
 
